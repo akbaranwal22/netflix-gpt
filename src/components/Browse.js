@@ -3,6 +3,8 @@ import useNowPlayingMovies from "../hooks/useNowPlayingMovies";
 import usePopularMovies from "../hooks/usePopularMovies";
 import useTopRatedMovies from "../hooks/useTopRatedMovies";
 import useUpComingMovies from "../hooks/useUpComingMovies";
+import useAnimeMovies from "../hooks/useAnimeMovies";
+import useAnimeSeries from "../hooks/useAnimeSeries";
 import Header from "./Header";
 import MainContainer from './MainContainer';
 import SecondContainer from './SecondaryContainer';
@@ -16,6 +18,8 @@ const Browse = () => {
     usePopularMovies();
     useTopRatedMovies();
     useUpComingMovies();
+    useAnimeMovies();
+    useAnimeSeries();
   
     return (
       <div>
