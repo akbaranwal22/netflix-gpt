@@ -82,29 +82,65 @@ const Login = () => {
     return (
         <div>
             <Header />
-            <div className="absolute">
+            <div className="absolute inset-0">
                 <img 
-                    className="h-screen object-cover"
+                    className="w-full h-full object-cover"
                     src={BG_URL}
                     alt="background-image"
                 />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/80"></div>
             </div>
 
-            <form onSubmit={(e) => e.preventDefault()} className="w-full md: w-3/12 absolute p-12 bg-black my-36 mx-auto left-0 right-0 text-white bg-opacity-80 rounded-sm">
-                <h1 className="font-bold text-3xl py-4"> Sign In</h1>
-                {!isSignInForm && <input ref={name} type="text" placeholder="Full Name" className="p-3 my-4 w-full bg-gray-700" />}
-                <input ref={email} type="text" placeholder="Email Address" className="p-3 my-4 w-full bg-gray-700" />
-                <input ref={password} type="password" placeholder="Password" className="p-3 my-4 w-full bg-gray-700" />
+            <form onSubmit={(e) => e.preventDefault()} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg px-10 sm:px-14 md:px-20 py-6 md:py-10 bg-black/75 backdrop-blur-sm text-white rounded-lg shadow-2xl">
+                <h1 className="font-bold text-2xl sm:text-3xl md:text-4xl mb-6 text-center">
+                    {isSignInForm ? "Sign In" : "Sign Up"}
+                </h1>
+                
+                <div className="space-y-4">
+                    {!isSignInForm && (
+                        <input 
+                            ref={name} 
+                            type="text" 
+                            placeholder="Full Name" 
+                            className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-200 placeholder-gray-400"
+                        />
+                    )}
+                    
+                    <input 
+                        ref={email} 
+                        type="email" 
+                        placeholder="Email Address" 
+                        className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-200 placeholder-gray-400"
+                    />
+                    
+                    <input 
+                        ref={password} 
+                        type="password" 
+                        placeholder="Password" 
+                        className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent transition-all duration-200 placeholder-gray-400"
+                    />
+                </div>
 
-                <p className="text-sm font-semibold text-red-600 py-2"> {errorMsg} </p>
+                {errorMsg && (
+                    <p className="text-sm font-semibold text-red-500 mt-4 p-2 bg-red-900/20 border border-red-800/30 rounded-md">
+                        {errorMsg}
+                    </p>
+                )}
 
-                <button className="p-2 my-6 bg-red-700 w-full rounded-lg" onClick={handleButtonClick}> {isSignInForm ? "Sign In" : "Sign Up"} </button>
+                <button 
+                    className="w-full py-3 mt-6 bg-red-600 hover:bg-red-700 rounded-md font-semibold text-lg transition-colors duration-200 shadow-lg hover:shadow-red-600/25" 
+                    onClick={handleButtonClick}
+                >
+                    {isSignInForm ? "Sign In" : "Sign Up"}
+                </button>
 
-                <p className="py-6 cursor-pointer" onClick={toggleSignInForm}>
-                    {isSignInForm
-                        ? "New to Netflix? Sign Up Now"
-                        : "Already registered? Sign In Now."}
-                </p>
+                <div className="mt-6 text-center">
+                    <p className="text-gray-300 cursor-pointer hover:text-white transition-colors duration-200" onClick={toggleSignInForm}>
+                        {isSignInForm
+                            ? "New to Netflix? Sign Up Now"
+                            : "Already registered? Sign In Now."}
+                    </p>
+                </div>
             </form>
         </div>
     )
