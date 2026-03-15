@@ -75,7 +75,7 @@ const Header = () => {
                 </select>
               )}
                     <button
-                        className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
+                        className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg hover:bg-purple-700 transition-colors"
                         onClick={handleGptSearchClick}
                     >
                         {showGptSearch ? "Homepage" : "GPT Search"}
@@ -85,8 +85,13 @@ const Header = () => {
                         alt="usericon"
                         src={user?.photoURL}
                     />
-                    <button onClick={handleSignOut} className="font-bold text-white ">
-                        (Sign Out)
+                    <button 
+                        onClick={handleSignOut} 
+                        className="font-bold text-white p-2 hover:bg-white/10 rounded-full transition-colors"
+                    >
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
                     </button>
                 </div>
             )}
